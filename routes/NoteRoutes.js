@@ -1,12 +1,12 @@
 const noteModel = require('../models/Notes.js');
 //TODO - Create a new Note
-let newNote = new noteModel(
+let newNote = new Note(
 {
-  "noteTitle": "friday",
-  "noteDescription": "presentation",
-  "priority":"high",
-  "dateAdded":"oct-12-2022",
-  "dateUpdated":"oct-15-2022"
+  noteTitle: req.body.noteTitle,
+  noteDescription: req.body.noteDescription,
+  priority:req.body.priority,
+  dateAdded:req.body.dateAdded,
+  dateUpdated:req.body.dateUpdated
 }
 )
 //http://mongoosejs.com/docs/api.html#document_Document-save
