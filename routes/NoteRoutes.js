@@ -1,14 +1,11 @@
-const noteModel = require('../models/Notes.js');
+const noteModel = require('../models/Notes.js')
+const express = require('express')
+const app = express()
+
 //TODO - Create a new Note
-let newNote = new Note(
-{
-  noteTitle: req.body.noteTitle,
-  noteDescription: req.body.noteDescription,
-  priority:req.body.priority,
-  dateAdded:req.body.dateAdded,
-  dateUpdated:req.body.dateUpdated
-}
-)
+const newNote = new noteModel(req.body)
+
+
 //http://mongoosejs.com/docs/api.html#document_Document-save
 app.post('/notes', async (req, res) => {
     try{
@@ -41,7 +38,7 @@ app.get('/notes', async(req, res) => {
         const notes = await noteModel.find()
         res.status(200).send(notes)
     }catch(err){
-        res.status(200).send(err)
+        res.status(500).send(err)
     }
 })
 
@@ -56,7 +53,7 @@ app.get('/notes/:noteId', async (req, res) => {
             });
         }
         //TODO - Write your code here to return onlt one note using noteid
-        const oneNote = await noteModel.findOne(req.params.noteId)
+        const oneNote = await noteModel.findById(req.params.noteId)
         res.status(200).send(oneNote)
     }catch(err){
         res.status(500).send(err)
@@ -103,3 +100,6 @@ app.delete('/notes/:noteId', async(req, res) => {
         res.status(500).send(err)
     }
 })
+
+
+module.exports = NoteRouter

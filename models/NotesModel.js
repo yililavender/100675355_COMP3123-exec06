@@ -10,9 +10,9 @@ const mongoose = require('mongoose');
 const NoteSchema = new mongoose.Schema({
   noteTitle: String,
   noteDescription: String,
-  priority:String,
-  dateAdded:String,
-  dateUpdated:String
+  priority: String,
+  dateAdded: Data,
+  dateUpdated: Data
 })
 
 const Notes = mongoose.model("Notes", NoteSchema);
