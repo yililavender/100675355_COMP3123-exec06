@@ -11,8 +11,8 @@ const NoteSchema = new mongoose.Schema({
   noteTitle: String,
   noteDescription: String,
   priority: String,
-  dateAdded: Data,
-  dateUpdated: Data
+  dateAdded: Date,
+  dateUpdated: Date
 })
 
 const Notes = mongoose.model("Notes", NoteSchema);

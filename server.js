@@ -1,15 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/NoteRoutes.js');
 
 
 const DB_URL = "mongodb+srv://yililavender:wVdh5ZSRzsyc2Kl8@cluster0.asthkb5.mongodb.net/gbc_full_stack?retryWrites=true&w=majority"
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-app.use('/', noteRoutes);
+app.use(noteRoutes);
 
 mongoose.Promise = global.Promise;
 
@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(8081, () => {
+app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
